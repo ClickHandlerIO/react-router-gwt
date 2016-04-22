@@ -33,17 +33,17 @@ public abstract class RouteComponent<R extends RouteProxy<A>, A, P extends Route
     }
 
     @Override
-    protected void componentDidMount(ReactComponent<P, S> $this, P props, S state) {
-        super.componentDidMount($this, props, state);
+    protected void componentDidMount(ReactComponent<P, S> $this) {
+        super.componentDidMount($this);
 
         // Set Route Leave Hook.
         getRouter($this).setRouteLeaveHook(
-            $this.getProps().getRoute(),
-            nextLocation -> routerWillLeave($this, $this.getProps(), $this.getState(), nextLocation)
+                $this.getProps().getRoute(),
+                nextLocation -> routerWillLeave($this, nextLocation)
         );
     }
 
-    protected String routerWillLeave(ReactComponent<P, S> $this, P props, S state, Location nextLocation) {
+    protected String routerWillLeave(ReactComponent<P, S> $this, Location nextLocation) {
         return null;
     }
 }
