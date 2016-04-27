@@ -18,11 +18,13 @@ public abstract class RouteComponent<R extends RouteProxy<A>, A, P extends Route
     }
 
     public Provider<R> getRouteProxyProvider() {
+        log.trace("getRouteProxyProvider", routeProxyProvider);
         return routeProxyProvider;
     }
 
     @Inject
     public void setRouteProxyProvider(Provider<R> routeProxyProvider) {
+        log.trace("setRouteProxyProvider", routeProxyProvider, routeProxyProvider.get());
         this.routeProxyProvider = routeProxyProvider;
         this.routeProxy = routeProxyProvider.get();
     }
